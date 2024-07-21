@@ -1,25 +1,37 @@
-const express = require('express')
-const logger = require('morgan')
-const cors = require('cors')
+import express from 'express';
+import morgan from 'morgan';
+import cors from 'cors';
+import { serve, setup } from 'swagger-ui-express';
+import swaggerDoc from './swagger.json' assert { type: 'json' };
+import { authRoute, boardRoute, cardRoute, columnRoute, userRoute } from './routes/index.js';
 
-const contactsRouter = require('./routes/api/contacts')
+const app = express();
 
-const app = express()
+app.use(morgan('tiny'));
+app.use(cors());
+app.use(express.json());
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: false }));
 
-const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short'
+app.use('/api-docs', serve, setup(swaggerDoc));
+app.use('/api/auth', authRoute);
+// app.use('/api/boards', boardRoute);
+// app.use('/api/cards', columnRoute);
+// app.use('/api/columns', cardRoute);
+app.use('/api/users', userRoute);
 
-app.use(logger(formatsLogger))
-app.use(cors())
-app.use(express.json())
+app.use((_, res, next) => {
+  res.status(404).json({ message: 'Route not found!' });
 
-app.use('/api/contacts', contactsRouter)
-
-app.use((req, res) => {
-  res.status(404).json({ message: 'Not found' })
-})
+  next();
+});
 
 app.use((err, req, res, next) => {
-  res.status(500).json({ message: err.message })
-})
+  const { status = 500, message = 'Server error' } = err;
 
-module.exports = app
+  res.status(status).json({ message });
+
+  next();
+});
+
+export default app;
