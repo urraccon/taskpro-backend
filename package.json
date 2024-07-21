@@ -5,7 +5,7 @@
     "team-leader": "Alexandru Ostafi",
     "first-developer": "Cristian Valentin Calota",
     "second-developer": "Ramona Monica Pintea",
-    "third-developer": "Ioana Mihaela Curelusa (Crush on Raul Licaret 💙)",
+    "third-developer": "Ioana Mihaela Curelusa",
     "forth-developer": "Daniel Bercea"
   },
   "version": "1.0.0",
@@ -18,16 +18,27 @@
     "node": ">=14.0.0 <20.0.0"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=production node ./server.js",
-    "start:dev": "cross-env NODE_ENV=development nodemon ./server.js",
+    "dev": "cross-env NODE_ENV=development nodemon ./server.js",
+    "start": "cross-env NODE_ENV=production nodemon ./server.js",
     "lint": "eslint **/*.js",
     "lint:fix": "eslint --fix **/*.js"
   },
   "dependencies": {
-    "cors": "2.8.5",
+    "bcrypt": "^5.1.1",
+    "cloudinary": "^2.3.0",
+    "cors": "^2.8.5",
     "cross-env": "7.0.3",
-    "express": "4.17.1",
-    "morgan": "1.10.0"
+    "crypto-js": "^4.2.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.1",
+    "morgan": "1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "path": "^0.12.7",
+    "swagger-ui-express": "^5.0.1",
+    "validator": "^13.12.0"
   },
   "devDependencies": {
     "eslint": "7.19.0",
