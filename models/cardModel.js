@@ -29,6 +29,13 @@ const cardModel = new Schema(
         "The card must be associated with a column to perform this operation",
       ],
     },
+    boardId: {
+      type: String,
+      required: [
+        true,
+        "The card must be associated with a board to perform this operation",
+      ],
+    },
   },
   {
     versionKey: false,
