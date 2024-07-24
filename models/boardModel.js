@@ -48,7 +48,10 @@ const boardSchema = new Schema(
     },
     userId: {
       type: String,
-      required: [true, "You must be logged in to perform this operation"],
+      required: [
+        true,
+        "The board must be associated with a user to perform this operation",
+      ],
     },
   },
   {
