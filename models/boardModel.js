@@ -46,6 +46,10 @@ const boardSchema = new Schema(
       type: Array,
       default: [],
     },
+    cardIdList: {
+      type: Array,
+      default: [],
+    },
     userId: {
       type: String,
       required: [

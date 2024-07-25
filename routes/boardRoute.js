@@ -7,7 +7,7 @@ import {
   updateBoard,
   deleteBoard,
 } from "../controller/board/index.js";
-import { boardSchema, updateBoardSchema } from "../schemas/index.js";
+import { boardSchema, boardUpdatingSchema } from "../schemas/index.js";
 
 const boardRoute = express.Router();
 
@@ -18,7 +18,7 @@ boardRoute
   .patch(
     "/:boardId",
     protectRoute,
-    validateBody(updateBoardSchema),
+    validateBody(boardUpdatingSchema),
     updateBoard
   )
   .delete("/:boardId", protectRoute, deleteBoard);

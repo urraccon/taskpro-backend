@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 const boardSchema = Joi.object({
-  title: Joi.string().min(2).max(24).required(),
+  title: Joi.string().min(2).max(20).required(),
   icon: Joi.string()
     .valid(
       "project",
@@ -42,7 +42,7 @@ const boardSchema = Joi.object({
     }),
 });
 
-const updateBoardSchema = Joi.object({
+const boardUpdatingSchema = Joi.object({
   title: Joi.string().min(2).max(24),
   icon: Joi.string()
     .valid(
@@ -84,5 +84,5 @@ const updateBoardSchema = Joi.object({
     }),
 });
 
-export { boardSchema, updateBoardSchema };
-export default { boardSchema, updateBoardSchema };
+export { boardSchema, boardUpdatingSchema };
+export default { boardSchema, boardUpdatingSchema };

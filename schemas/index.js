@@ -5,10 +5,14 @@ export {
   updateActiveBoardSchema,
 } from "./userSchema.js";
 export { helpSchema } from "./helpSchema.js";
-export { boardSchema, updateBoardSchema } from "./boardSchema.js";
+export { boardSchema, boardUpdatingSchema } from "./boardSchema.js";
 export {
-  fetchColumnsSchema,
+  columnsFetchingSchema,
   columnSchema,
-  updateColumnSchema,
+  columnUpdatingSchema,
 } from "./columnSchema.js";
-export { fetchCardsSchema, cardSchema } from "./cardSchema.js";
+export {
+  cardsFetchingSchema,
+  cardSchema,
+  cardUpdatingSchema,
+} from "./cardSchema.js";

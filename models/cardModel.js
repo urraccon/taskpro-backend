@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { model, Schema } from "mongoose";
 
-const now = dayjs().startOf("day").toDate();
+const now = dayjs().format("YYYY-MM-DD");
 
 const cardModel = new Schema(
   {
@@ -34,6 +34,13 @@ const cardModel = new Schema(
       required: [
         true,
         "The card must be associated with a board to perform this operation",
+      ],
+    },
+    userId: {
+      type: String,
+      required: [
+        true,
+        "The card must be associated with a user to perform this operation",
       ],
     },
   },
