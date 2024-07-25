@@ -17,6 +17,13 @@ const columnModel = new Schema(
         "The column must be associated with a board to perform this operation",
       ],
     },
+    userId: {
+      type: String,
+      required: [
+        true,
+        "The column must be associated with a user to perform this operation",
+      ],
+    },
   },
   {
     versionKey: false,

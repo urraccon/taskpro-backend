@@ -9,20 +9,20 @@ import {
 } from "../controller/column/index.js";
 import {
   columnSchema,
-  fetchColumnsSchema,
-  updateColumnSchema,
+  columnsFetchingSchema,
+  columnUpdatingSchema,
 } from "../schemas/index.js";
 
 const columnRoute = express.Router();
 
 columnRoute
-  .get("/", protectRoute, validateBody(fetchColumnsSchema), fetchColumns)
+  .get("/", protectRoute, validateBody(columnsFetchingSchema), fetchColumns)
   .get("/:columnId", protectRoute, fetchColumn)
   .post("/", protectRoute, validateBody(columnSchema), addColumn)
   .patch(
     "/:columnId",
     protectRoute,
-    validateBody(updateColumnSchema),
+    validateBody(columnUpdatingSchema),
     updateColumn
   )
   .delete("/:columnId", protectRoute, deleteColumn);
