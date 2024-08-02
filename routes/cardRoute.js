@@ -6,7 +6,7 @@ import {
   fetchCard,
   fetchCards,
   updateCard,
-} from "../controller/cards/index.js";
+} from "../controller/card/index.js";
 import {
   cardSchema,
   cardsFetchingSchema,
