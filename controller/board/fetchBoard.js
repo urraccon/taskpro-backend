@@ -29,7 +29,7 @@ const fetchBoard = ctrlWrapper(async (req, res, next) => {
     })
   );
   const updatedBoard = {
-    board,
+    ...board._doc,
     columnList,
   };
 
