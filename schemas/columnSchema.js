@@ -10,7 +10,7 @@ const columnSchema = Joi.object({
 });
 
 const columnUpdatingSchema = Joi.object({
-  title: Joi.string().min(2).max(32),
+  title: Joi.string().min(2).max(36),
 });
 
 export { columnsFetchingSchema, columnSchema, columnUpdatingSchema };
