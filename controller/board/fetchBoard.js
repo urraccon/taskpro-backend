@@ -21,15 +21,16 @@ const fetchBoard = ctrlWrapper(async (req, res, next) => {
         )
       );
       const updatedColumn = {
-        column,
+        ...column._doc,
         cardList,
       };
 
       return updatedColumn;
     })
   );
+
   const updatedBoard = {
-    board,
+    ...board._doc,
     columnList,
   };
 

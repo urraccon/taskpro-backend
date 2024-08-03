@@ -1,5 +1,10 @@
 import { ctrlWrapper, httpError } from "../../helpers/index.js";
-import { boardModel, cardModel, columnModel } from "../../models/index.js";
+import {
+  boardModel,
+  cardModel,
+  columnModel,
+  userModel,
+} from "../../models/index.js";
 
 const deleteBoard = ctrlWrapper(async (req, res, next) => {
   const { boardId } = req.params;
@@ -9,6 +14,20 @@ const deleteBoard = ctrlWrapper(async (req, res, next) => {
 
   await columnModel.deleteMany({ boardId });
   await cardModel.deleteMany({ boardId });
+
+  const userId = req.user.id;
+  const boardList = await boardModel.find({ userId });
+  if (boardList.length !== 0) {
+    const firstBoardId = boardList[0]._id;
+
+    await userModel.findByIdAndUpdate(userId, {
+      activeBoard: firstBoardId,
+    });
+  } else {
+    await userModel.findByIdAndUpdate(userId, {
+      activeBoard: null,
+    });
+  }
 
   res.status(204).send();
 });

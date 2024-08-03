@@ -15,4 +15,5 @@ export {
   cardsFetchingSchema,
   cardSchema,
   cardUpdatingSchema,
+  cardMovingSchema,
 } from "./cardSchema.js";

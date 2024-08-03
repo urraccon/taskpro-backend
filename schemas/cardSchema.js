@@ -32,5 +32,19 @@ const cardUpdatingSchema = Joi.object({
   }),
 });
 
-export { cardsFetchingSchema, cardSchema, cardUpdatingSchema };
-export default { cardsFetchingSchema, cardSchema, cardUpdatingSchema };
+const cardMovingSchema = Joi.object({
+  columnId: Joi.string().min(24).max(24).required(),
+});
+
+export {
+  cardsFetchingSchema,
+  cardSchema,
+  cardUpdatingSchema,
+  cardMovingSchema,
+};
+export default {
+  cardsFetchingSchema,
+  cardSchema,
+  cardUpdatingSchema,
+  cardMovingSchema,
+};

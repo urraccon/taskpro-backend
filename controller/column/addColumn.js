@@ -13,7 +13,8 @@ const addColumn = ctrlWrapper(async (req, res, next) => {
   if (column) throw httpError(409, `A column named ${title} already exists`);
 
   const createdColumn = await columnModel.create({ ...req.body, userId });
-  const columnIdList = board.columnIdList.push(createdColumn._id);
+  const createdColumnId = createdColumn._id;
+  const columnIdList = [...board.columnIdList, createdColumnId];
 
   await boardModel.findByIdAndUpdate(boardId, {
     columnIdList,
