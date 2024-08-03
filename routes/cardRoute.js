@@ -5,9 +5,11 @@ import {
   deleteCard,
   fetchCard,
   fetchCards,
+  moveCard,
   updateCard,
 } from "../controller/card/index.js";
 import {
+  cardMovingSchema,
   cardSchema,
   cardsFetchingSchema,
   cardUpdatingSchema,
@@ -20,6 +22,12 @@ cardRoute
   .get("/:cardId", protectRoute, fetchCard)
   .post("/", protectRoute, validateBody(cardSchema), addCard)
   .patch("/:cardId", protectRoute, validateBody(cardUpdatingSchema), updateCard)
-  .delete("/:cardId", protectRoute, deleteCard);
+  .delete("/:cardId", protectRoute, deleteCard)
+  .patch(
+    "/:cardId/move",
+    protectRoute,
+    validateBody(cardMovingSchema),
+    moveCard
+  );
 
 export default cardRoute;
