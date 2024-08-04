@@ -15,8 +15,8 @@ const cardModel = new Schema(
     },
     priority: {
       type: String,
-      enum: ["without", "low", "medium", "high"],
-      default: "without",
+      enum: ["no-priority", "low", "medium", "high"],
+      default: "no-priority",
     },
     deadline: {
       type: Date,
