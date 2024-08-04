@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import Joi from "joi";
 
-const now = dayjs().format("YYYY-MM-DD");
+const now = dayjs().startOf("day").toDate();
 
 const cardsFetchingSchema = Joi.object({
   columnId: Joi.string().min(24).max(24).required(),

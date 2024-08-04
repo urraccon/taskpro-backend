@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { model, Schema } from "mongoose";
 
-const now = dayjs().format("YYYY-MM-DD");
+const now = dayjs().startOf("day").toDate();
 
 const cardModel = new Schema(
   {
@@ -20,7 +20,7 @@ const cardModel = new Schema(
     },
     deadline: {
       type: Date,
-      default: new Date(now),
+      default: now,
     },
     columnId: {
       type: String,
