@@ -20,7 +20,7 @@ const cardModel = new Schema(
     },
     deadline: {
       type: Date,
-      default: now,
+      default: new Date(now),
     },
     columnId: {
       type: String,
