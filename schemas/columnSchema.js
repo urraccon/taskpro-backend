@@ -5,12 +5,12 @@ const columnsFetchingSchema = Joi.object({
 });
 
 const columnSchema = Joi.object({
-  title: Joi.string().min(2).max(36).required(),
+  title: Joi.string().min(2).max(50).required(),
   boardId: Joi.string().min(24).max(24).required(),
 });
 
 const columnUpdatingSchema = Joi.object({
-  title: Joi.string().min(2).max(36),
+  title: Joi.string().min(3).max(50),
 });
 
 export { columnsFetchingSchema, columnSchema, columnUpdatingSchema };
