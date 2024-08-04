@@ -10,10 +10,12 @@ const cardsFetchingSchema = Joi.object({
 const cardSchema = Joi.object({
   title: Joi.string().min(2).max(36).required(),
   description: Joi.string().max(256),
-  priority: Joi.string().valid("without", "low", "medium", "hight").messages({
-    "any.only":
-      "The selected option does not match any of the allowed options: {{#valids}}",
-  }),
+  priority: Joi.string()
+    .valid("no-priority", "low", "medium", "hight")
+    .messages({
+      "any.only":
+        "The selected option does not match any of the allowed options: {{#valids}}",
+    }),
   deadline: Joi.date().min(now).messages({
     "date.min": "You cannot set a deadline in the past",
   }),
