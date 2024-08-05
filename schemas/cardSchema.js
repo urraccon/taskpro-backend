@@ -1,35 +1,35 @@
 import dayjs from "dayjs";
 import Joi from "joi";
 
-const now = dayjs().format("YYYY-MM-DD");
+const today = dayjs().startOf("day");
 
 const cardsFetchingSchema = Joi.object({
   columnId: Joi.string().min(24).max(24).required(),
 });
 
 const cardSchema = Joi.object({
-  title: Joi.string().min(2).max(36).required(),
-  description: Joi.string().max(256),
+  title: Joi.string().min(2).max(50).required(),
+  description: Joi.string().min(5).max(250),
   priority: Joi.string()
-    .valid("no-priority", "low", "medium", "hight")
+    .valid("no-priority", "low", "medium", "high")
     .messages({
       "any.only":
         "The selected option does not match any of the allowed options: {{#valids}}",
     }),
-  deadline: Joi.date().min(now).messages({
+  deadline: Joi.date().min(today).messages({
     "date.min": "You cannot set a deadline in the past",
   }),
   columnId: Joi.string().min(24).max(24).required(),
 });
 
 const cardUpdatingSchema = Joi.object({
-  title: Joi.string().min(2).max(36),
-  description: Joi.string().max(256),
+  title: Joi.string().min(2).max(50),
+  description: Joi.string().min(5).max(250),
   priority: Joi.string().valid("without", "low", "medium", "high").messages({
     "any.only":
       "The selected option does not match any of the allowed options: {{#valids}}",
   }),
-  deadline: Joi.date().min(now).messages({
+  deadline: Joi.date().min(today).messages({
     "date.min": "You cannot set a deadline in the past",
   }),
 });
