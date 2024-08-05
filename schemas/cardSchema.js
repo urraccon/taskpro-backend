@@ -25,10 +25,12 @@ const cardSchema = Joi.object({
 const cardUpdatingSchema = Joi.object({
   title: Joi.string().min(2).max(50),
   description: Joi.string().min(5).max(250),
-  priority: Joi.string().valid("without", "low", "medium", "high").messages({
-    "any.only":
-      "The selected option does not match any of the allowed options: {{#valids}}",
-  }),
+  priority: Joi.string()
+    .valid("no-priority", "low", "medium", "high")
+    .messages({
+      "any.only":
+        "The selected option does not match any of the allowed options: {{#valids}}",
+    }),
   deadline: Joi.date().min(today).messages({
     "date.min": "You cannot set a deadline in the past",
   }),
