@@ -1,5 +1,6 @@
 import { ctrlWrapper, httpError } from "../../helpers/index.js";
 import { cardModel, columnModel } from "../../models/index.js";
+import { ObjectId } from "mongodb";
 
 const moveCard = ctrlWrapper(async (req, res, next) => {
   const { cardId } = req.params;
@@ -27,7 +28,12 @@ const moveCard = ctrlWrapper(async (req, res, next) => {
     cardIdList: updatedMoveFromColumnCardIdList,
   });
 
-  const updatedMoveToColumnCardIdList = [...moveToColumn.cardIdList, cardId];
+  const objectIdCard = new ObjectId(cardId);
+
+  const updatedMoveToColumnCardIdList = [
+    ...moveToColumn.cardIdList,
+    objectIdCard,
+  ];
 
   await columnModel.findByIdAndUpdate(moveToColumn, {
     cardIdList: updatedMoveToColumnCardIdList,
